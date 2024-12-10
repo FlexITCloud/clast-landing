@@ -1,0 +1,15 @@
+{
+    "extends": [
+      "plugin:prettier/recommended",
+      "react-app",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": ["react", "@typescript-eslint"],
+    "rules": {
+      "@typescript-eslint/interface-name-prefix": 1,
+      "@typescript-eslint/explicit-function-return-type": 2,
+      "@typescript-eslint/explicit-module-boundary-types": 2,
+      "@typescript-eslint/no-explicit-any": 2
+    }
+  }

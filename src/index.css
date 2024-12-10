@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: WantedSans;
+  font-weight: 400;
+  font-style: normal;
+  src: url('/font/WantedSans-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 500;
+  font-style: normal;
+  src: url('/font/WantedSans-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 600;
+  font-style: normal;
+  src: url('/font/WantedSans-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 700;
+  font-style: normal;
+  src: url('/font/WantedSans-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 800;
+  font-style: normal;
+  src: url('/font/WantedSans-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 900;
+  font-style: normal;
+  src: url('/font/WantedSans-Black.woff2') format('woff2');
+}
+@font-face {
+  font-family: WantedSans;
+  font-weight: 950;
+  font-style: normal;
+  src: url('/font/WantedSans-ExtraBlack.woff2') format('woff2');
+}
+
+@layer base {
+  html,
+  body {
+    @apply font-WantedSans;
+  }
+}
