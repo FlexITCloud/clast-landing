@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react';
 import {
-  Dialog,
-  DialogPanel,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
-import {
-  Bars3Icon,
-  MinusIcon,
-  PlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import {
   ArrowPathIcon,
   CheckIcon,
@@ -22,15 +15,10 @@ import {
   ServerIcon,
 } from '@heroicons/react/20/solid';
 
-import ClastCloudWhiteLogo from '../assets/image/clast-cloud-logo-white.svg';
 import { DashboardURL } from '../constant';
+import Navbar from '../components/Navbar';
+import CloudflareWhiteLogo from '../assets/image/cloudflare-logo-white.svg';
 
-const navigation = [
-  { name: '클라우드 VPS', href: '#' },
-  { name: '단독서버', href: '#' },
-  { name: 'DDos 방어', href: '#' },
-  { name: '구매 문의', href: '#' },
-];
 const features = [
   {
     name: 'Push to deploy.',
@@ -136,14 +124,11 @@ const footerNavigation = {
   ],
 };
 
-function classNames(...classes: string[]) {
+const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
-}
+};
 
-export default function LandingPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  //
+const LandingPage = () => {
   const words = ['Custom', 'Clast'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
@@ -182,96 +167,7 @@ export default function LandingPage() {
 
   return (
     <div className="bg-white">
-      {/* Header */}
-      <header className="absolute inset-x-0 top-0 z-50">
-        <nav
-          aria-label="Global"
-          className="flex items-center justify-between p-6 lg:px-8"
-        >
-          <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto" src={ClastCloudWhiteLogo}></img>
-            </a>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
-            </button>
-          </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm/6 font-semibold text-white"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href={DashboardURL}
-              className="text-sm/6 font-semibold text-white"
-            >
-              Go to Dashboard <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </nav>
-        <Dialog
-          open={mobileMenuOpen}
-          onClose={setMobileMenuOpen}
-          className="lg:hidden"
-        >
-          <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img alt="" src={ClastCloudWhiteLogo} className="h-8 w-auto" />
-              </a>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-gray-400"
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="size-6" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/25">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <a
-                    href={DashboardURL}
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800"
-                  >
-                    Go to Dashboard
-                  </a>
-                </div>
-              </div>
-            </div>
-          </DialogPanel>
-        </Dialog>
-      </header>
-
+      <Navbar />
       <main>
         {/* Hero section */}
         <div className="relative isolate overflow-hidden bg-gray-900 pb-16 pt-14 sm:pb-20">
@@ -328,38 +224,10 @@ export default function LandingPage() {
             <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
               <img
                 alt="Transistor"
-                src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-white.svg"
+                src={CloudflareWhiteLogo}
                 width={158}
                 height={48}
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              />
-              <img
-                alt="Reform"
-                src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-white.svg"
-                width={158}
-                height={48}
-                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              />
-              <img
-                alt="Tuple"
-                src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-white.svg"
-                width={158}
-                height={48}
-                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              />
-              <img
-                alt="SavvyCal"
-                src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-white.svg"
-                width={158}
-                height={48}
-                className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-              />
-              <img
-                alt="Statamic"
-                src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-white.svg"
-                width={158}
-                height={48}
-                className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
               />
             </div>
           </div>
@@ -385,7 +253,8 @@ export default function LandingPage() {
                 당신이 원하는 모든 것, Clast Cloud
               </h2>
               <p className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl">
-                No server? No problem.
+                No server? <br className="sm:hidden" />
+                No problem.
               </p>
               <p className="mt-6 text-lg/8 text-gray-600">
                 당신이 원할 때 365일 24시간, 원하는 대로 서버를 구축하고 사용할
@@ -716,4 +585,6 @@ export default function LandingPage() {
       </footer>
     </div>
   );
-}
+};
+
+export default LandingPage;
