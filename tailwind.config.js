@@ -1,10 +1,12 @@
-import react from '@vitejs/plugin-react-swc';
-export const content = ['./src/**/*.{js,jsx,ts,tsx}'];
-export const theme = {
-  extend: {
-    fontFamily: {
-      WantedSans: ['WantedSans'],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        WantedSans: ["WantedSans"],
+      },
     },
   },
+  plugins: [],
 };
-export const plugins = [react()];
