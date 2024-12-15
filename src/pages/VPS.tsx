@@ -14,8 +14,8 @@ const tiers: {
   mostPopular: boolean;
 }[] = [
   {
-    name: 'Bronze',
-    id: 'tier-freelancer',
+    name:'Bronze',
+    id:'tier-freelancer',
     href: '#',
     price: 'KRW 5000',
     description: 'The essentials to provide your best work for clients.',
