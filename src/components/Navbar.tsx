@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import ClastCloudWhiteLogo from '../assets/image/clast-cloud-logo-white.svg';
-import { Bars3Icon } from '@heroicons/react/24/solid';
-import { DashboardURL, VPSDetailPageURL } from '../constant';
+
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon } from '@heroicons/react/24/solid';
+
+import ClastCloudWhiteLogo from '../assets/image/clast-cloud-logo-white.svg';
+import { DashboardURL, VPSDetailPageURL } from '../constant';
 
 const navigation = [
   {

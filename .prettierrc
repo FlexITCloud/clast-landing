@@ -1,10 +1,25 @@
 {
   "singleQuote": true,
-  "trailingComma": "all",
   "semi": true,
   "useTabs": false,
   "tabWidth": 2,
+  "trailingComma": "all",
   "printWidth": 80,
+  "bracketSpacing": true,
   "arrowParens": "always",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "endOfLine": "auto",
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "^@mui/(.*)$",
+    "^@untitled-ui/(.*)$",
+    "^react",
+    "^src/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

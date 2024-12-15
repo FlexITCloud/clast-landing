@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react';
-import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import {
   ArrowPathIcon,
   CheckIcon,
@@ -14,16 +14,18 @@ import {
   LockClosedIcon,
   ServerIcon,
 } from '@heroicons/react/20/solid';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
-import { DashboardURL } from '../constant';
-import Navbar from '../components/Navbar';
 import CloudflareWhiteLogo from '../assets/image/cloudflare-logo-white.svg';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import { DashboardURL, VPSDetailPageURL } from '../constant';
 
 const features = [
   {
     name: 'Push to deploy.',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+      '24시간 365일, 생성 요청 후 바로 서버를 생성하고 서비스를 시작할 수 있습니다.',
     icon: CloudArrowUpIcon,
   },
   {
@@ -59,10 +61,10 @@ const features = [
 ];
 const tiers = [
   {
-    name: 'Hobby',
-    id: 'tier-hobby',
-    href: '#',
-    priceMonthly: '$19',
+    name: 'Cloud VPS',
+    id: 'tier-cloud-vps',
+    href: VPSDetailPageURL,
+    priceMonthly: 'KRW 5000',
     description:
       "The perfect plan if you're just getting started with our product.",
     features: [
@@ -74,10 +76,10 @@ const tiers = [
     featured: false,
   },
   {
-    name: 'Enterprise',
-    id: 'tier-enterprise',
+    name: 'Deicated Server',
+    id: 'tier-dedicated-server',
     href: '#',
-    priceMonthly: '$49',
+    priceMonthly: 'KRW 50000',
     description: 'Dedicated support and infrastructure for your company.',
     features: [
       'Unlimited products',
@@ -98,48 +100,23 @@ const faqs = [
   },
   // More questions...
 ];
-const footerNavigation = {
-  solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Automation', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
-  ],
-  support: [
-    { name: 'Submit ticket', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-  ],
-  company: [
-    { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-  ],
-  legal: [
-    { name: 'Terms of service', href: '#' },
-    { name: 'Privacy policy', href: '#' },
-    { name: 'License', href: '#' },
-  ],
-};
 
 const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
 const LandingPage = () => {
-  const words = ['Custom', 'Clast'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [_, setLoopCount] = useState(0);
+  const [, setLoopCount] = useState(0);
 
   const typingDelay = 100;
   const deletingDelay = 80;
   const delayBetweenWords = 2000;
 
   useEffect(() => {
+    const words = ['Custom', 'Clast'];
     const handleTyping = () => {
       const currentWord = words[currentWordIndex];
       if (isDeleting) {
@@ -163,7 +140,7 @@ const LandingPage = () => {
     );
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting]);
+  }, [currentWordIndex, displayText, isDeleting]);
 
   return (
     <div className="bg-white">
@@ -370,9 +347,7 @@ const LandingPage = () => {
               Choose the right plan for you
             </p>
             <p className="mt-6 text-lg/8 text-gray-600">
-              Choose an affordable plan that’s packed with the best features for
-              engaging your audience, creating customer loyalty, and driving
-              sales.
+              당신에게 적합한 솔루션을 선택하세요.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
@@ -415,7 +390,7 @@ const LandingPage = () => {
                       'text-base',
                     )}
                   >
-                    /month
+                    부터 시작
                   </span>
                 </p>
                 <p
@@ -456,7 +431,7 @@ const LandingPage = () => {
                     'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                   )}
                 >
-                  Get started today
+                  더 알아보기
                 </a>
               </div>
             ))}
@@ -467,7 +442,7 @@ const LandingPage = () => {
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
           <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
             <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-              Frequently asked questions
+              자주 묻는 질문
             </h2>
             <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
               {faqs.map((faq) => (
@@ -499,90 +474,7 @@ const LandingPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-32 bg-gray-900 sm:mt-56">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <img
-              alt="Company name"
-              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-              className="h-9"
-            />
-            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm/6 font-semibold text-white">
-                    Solutions
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.solutions.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm/6 text-gray-400 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm/6 font-semibold text-white">
-                    Support
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.support.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm/6 text-gray-400 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm/6 font-semibold text-white">
-                    Company
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.company.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm/6 text-gray-400 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm/6 font-semibold text-white">Legal</h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footerNavigation.legal.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm/6 text-gray-400 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

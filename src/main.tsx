@@ -1,7 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router';
+
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router';
 import LandingPage from './pages/Landing.tsx';
 import VPSDetailPage from './pages/VPS.tsx';
 

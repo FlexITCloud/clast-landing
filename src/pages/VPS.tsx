@@ -1,6 +1,8 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+
 import { CheckIcon } from '@heroicons/react/20/solid';
+
+import Navbar from '../components/Navbar';
 
 const tiers: {
   name: 'Bronze' | 'Silver' | 'Gold';
@@ -77,7 +79,7 @@ const VPSDetailPage = () => {
             </p>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">
-            Choose an affordable plan that’s packed with the best features for
+            Choose an affordable plan that's packed with the best features for
             engaging your audience, creating customer loyalty, and driving
             sales.
           </p>
