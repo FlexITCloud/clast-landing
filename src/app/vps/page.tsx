@@ -1,8 +1,9 @@
+'use client';
+
 import React from 'react';
 
+import Navbar from '@/container/Navbar';
 import { CheckIcon } from '@heroicons/react/20/solid';
-
-import Navbar from '../components/Navbar';
 
 const tiers: {
   name: 'Bronze' | 'Silver' | 'Gold';
@@ -15,7 +16,7 @@ const tiers: {
 }[] = [
   {
     name: 'Bronze',
-    id: 'tier-freelancer',
+    id: 'tier-bronze',
     href: '#',
     price: 'KRW 5000',
     description: 'The essentials to provide your best work for clients.',
@@ -29,7 +30,7 @@ const tiers: {
   },
   {
     name: 'Silver',
-    id: 'tier-startup',
+    id: 'tier-silver',
     href: '#',
     price: 'KRW 9000',
     description: 'A plan that scales with your rapidly growing business.',
@@ -44,7 +45,7 @@ const tiers: {
   },
   {
     name: 'Gold',
-    id: 'tier-enterprise',
+    id: 'tier-gold',
     href: '',
     price: 'KRW 12000',
     description: 'Dedicated support and infrastructure for your company.',
@@ -60,9 +61,9 @@ const tiers: {
   },
 ];
 
-function classNames(...classes: string[]) {
+const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
-}
+};
 
 const VPSDetailPage = () => {
   return (
@@ -79,8 +80,8 @@ const VPSDetailPage = () => {
             </p>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">
-            Choose an affordable plan that's packed with the best features for
-            engaging your audience, creating customer loyalty, and driving
+            Choose an affordable plan that&lsquo;s packed with the best features
+            for engaging your audience, creating customer loyalty, and driving
             sales.
           </p>
           <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">

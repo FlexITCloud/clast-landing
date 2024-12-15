@@ -1,11 +1,21 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { useState } from 'react';
 
+import ClastCloudWhiteLogo from '@/assets/image/clast-cloud-logo-white.svg';
+import {
+  ContactPageURL,
+  DDosDetailPageURL,
+  DashboardURL,
+  DedicatedDetailpageURL,
+  VPSDetailPageURL,
+} from '@/constant';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Bars3Icon } from '@heroicons/react/24/solid';
-
-import ClastCloudWhiteLogo from '../assets/image/clast-cloud-logo-white.svg';
-import { DashboardURL, VPSDetailPageURL } from '../constant';
 
 const navigation = [
   {
@@ -17,9 +27,9 @@ const navigation = [
       { name: 'Bronze  Tier', href: '/silver' },
     ],
   },
-  { name: '단독서버', href: '#' },
-  { name: 'DDos 방어', href: '#' },
-  { name: '구매 문의', href: '#' },
+  { name: '단독서버', href: DedicatedDetailpageURL },
+  { name: 'DDos 방어', href: DDosDetailPageURL },
+  { name: '구매 문의', href: ContactPageURL },
 ];
 
 const Navbar = () => {
@@ -36,10 +46,13 @@ const Navbar = () => {
         className="flex items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src={ClastCloudWhiteLogo}></img>
-          </a>
+          <Link href="/" className="-m-1.5 p-1.5">
+            <Image
+              src={ClastCloudWhiteLogo}
+              alt="clast logo"
+              className="h-8 w-auto"
+            />
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -102,10 +115,14 @@ const Navbar = () => {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img alt="" src={ClastCloudWhiteLogo} className="h-8 w-auto" />
-            </a>
+              <Image
+                alt="clast logo"
+                src={ClastCloudWhiteLogo}
+                className="h-8 w-auto"
+              />
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
