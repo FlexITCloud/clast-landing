@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
+
+import NotfoundBackground from '@/assets/image/404-background.webp';
 
 export default function NotFound() {
   return (
@@ -12,10 +15,9 @@ export default function NotFound() {
         ```
       */}
       <main className="relative isolate min-h-full">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           alt=""
-          src="https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75"
+          src={NotfoundBackground}
           className="absolute inset-0 -z-10 size-full object-cover object-top"
         />
         <div className="mx-auto max-w-7xl px-6 py-48 text-center sm:py-64 lg:px-8">
@@ -24,7 +26,7 @@ export default function NotFound() {
             Page not found
           </h1>
           <p className="mt-6 text-pretty text-lg font-medium text-white/70 sm:text-xl/8">
-            Sorry, we couldn’t find the page you’re looking for.
+            Sorry, we couldn&apos;t find the page you&apos;re looking for.
           </p>
           <div className="mt-10 flex justify-center">
             <Link href="/" className="text-sm/7 font-semibold text-white">
