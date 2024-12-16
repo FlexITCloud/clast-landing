@@ -8,20 +8,14 @@ import { useEffect, useState } from 'react';
 
 import CloudflareWhiteLogo from '@/assets/image/cloudflare-logo-white.svg';
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-} from '@headlessui/react';
-import {
-  ArrowPathIcon,
   CheckIcon,
   CloudArrowUpIcon,
   Cog6ToothIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
+  CreditCardIcon,
+  FunnelIcon,
+  GlobeAltIcon,
   ServerIcon,
 } from '@heroicons/react/20/solid';
-import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const features = [
   {
@@ -31,33 +25,33 @@ const features = [
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'SSL certificates.',
+    name: 'DDos Mitigation.',
     description:
-      'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-    icon: LockClosedIcon,
+      'DDos 공격으로 인한 피해를 예방하고 서비스를 안정적으로 운영할 수 있습니다.',
+    icon: FunnelIcon,
   },
   {
-    name: 'Simple queues.',
+    name: 'Easy to use.',
     description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
-    icon: ArrowPathIcon,
-  },
-  {
-    name: 'Advanced security.',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-    icon: FingerPrintIcon,
-  },
-  {
-    name: 'Powerful API.',
-    description:
-      'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+      '누구나 간편하게 직관적인 UI로 클라우드 서버를 구축하고, 운영할 수 있습니다.',
     icon: Cog6ToothIcon,
   },
   {
-    name: 'Database backups.',
+    name: 'Stable network.',
     description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ',
+      '자체 서울 IDC와 기업용 회선을 통해 안정적으로 서버를 운영하고, 다운타임을 최소화할 수 있습니다.',
+    icon: GlobeAltIcon,
+  },
+  {
+    name: 'Payment methods.',
+    description:
+      '카드, 간편결제, 계좌이체, 문화상품권, 휴대폰 결제까지, 다양한 결제수단을 지원합니다.',
+    icon: CreditCardIcon,
+  },
+  {
+    name: 'Snapshot backups.',
+    description:
+      '대시보드에서 서버의 상태를 스냅샷으로 저장하고, 언제든지 복구할 수 있습니다.',
     icon: ServerIcon,
   },
 ];
@@ -68,7 +62,7 @@ const tiers = [
     href: VPSDetailPageURL,
     priceMonthly: 'KRW 5000',
     description:
-      "The perfect plan if you're just getting started with our product.",
+      '소규모에서 중규모까지, 다양한 사이즈의 클라우드 서버를 구축하고 운영할 수 있습니다.',
     features: [
       '25 products',
       'Up to 10,000 subscribers',
@@ -82,7 +76,8 @@ const tiers = [
     id: 'tier-dedicated-server',
     href: '#',
     priceMonthly: 'KRW 50000',
-    description: 'Dedicated support and infrastructure for your company.',
+    description:
+      '대규모 서비스를 위한 전용 서버를 구축하고 운영할 수 있습니다.',
     features: [
       'Unlimited products',
       'Unlimited subscribers',
@@ -93,14 +88,6 @@ const tiers = [
     ],
     featured: true,
   },
-];
-const faqs = [
-  {
-    question: "What's the best thing about Switzerland?",
-    answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  // More questions...
 ];
 
 const classNames = (...classes: string[]) => {
@@ -227,15 +214,15 @@ const LandingPage = () => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="text-base/7 font-semibold text-indigo-600">
-              당신이 원하는 모든 것, Clast Cloud
+              당신이 원하는 모든 것, Clast Cloud VPS
             </h2>
             <p className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl">
               No server? <br className="sm:hidden" />
               No problem.
             </p>
             <p className="mt-6 text-lg/8 text-gray-600">
-              당신이 원할 때 365일 24시간, 원하는 대로 서버를 구축하고 사용할 수
-              있습니다.
+              365일 24시간 언제나, 원하는 대로 클라우드 서버를 구축하고 사용할
+              수 있습니다.
             </p>
           </div>
         </div>
@@ -258,14 +245,14 @@ const LandingPage = () => {
           <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {features.map((feature) => (
               <div key={feature.name} className="relative pl-9">
-                <dt className="inline font-semibold text-gray-900">
+                <dt className="mr-1 inline font-semibold text-gray-900">
                   <feature.icon
                     aria-hidden="true"
                     className="absolute left-1 top-1 size-5 text-indigo-600"
                   />
                   {feature.name}
                 </dt>{' '}
-                <dd className="inline">{feature.description}</dd>
+                <dd className="inline break-keep">{feature.description}</dd>
               </div>
             ))}
           </dl>
@@ -350,7 +337,7 @@ const LandingPage = () => {
             당신에게 적합한 솔루션을 선택하세요.
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+        <div className="mx-auto mb-64 mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
           {tiers.map((tier, tierIdx) => (
             <div
               key={tier.id}
@@ -396,7 +383,7 @@ const LandingPage = () => {
               <p
                 className={classNames(
                   tier.featured ? 'text-gray-300' : 'text-gray-600',
-                  'mt-6 text-base/7',
+                  'mt-6 break-keep text-base/7',
                 )}
               >
                 {tier.description}
@@ -435,41 +422,6 @@ const LandingPage = () => {
               </a>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* FAQ section */}
-      <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
-        <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
-          <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-            자주 묻는 질문
-          </h2>
-          <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
-            {faqs.map((faq) => (
-              <Disclosure key={faq.question} as="div" className="pt-6">
-                <dt>
-                  <DisclosureButton className="group flex w-full items-start justify-between text-left text-gray-900">
-                    <span className="text-base/7 font-semibold">
-                      {faq.question}
-                    </span>
-                    <span className="ml-6 flex h-7 items-center">
-                      <PlusIcon
-                        aria-hidden="true"
-                        className="size-6 group-data-[open]:hidden"
-                      />
-                      <MinusIcon
-                        aria-hidden="true"
-                        className="size-6 group-[&:not([data-open])]:hidden"
-                      />
-                    </span>
-                  </DisclosureButton>
-                </dt>
-                <DisclosurePanel as="dd" className="mt-2 pr-12">
-                  <p className="text-base/7 text-gray-600">{faq.answer}</p>
-                </DisclosurePanel>
-              </Disclosure>
-            ))}
-          </dl>
         </div>
       </div>
     </main>
