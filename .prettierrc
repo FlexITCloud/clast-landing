@@ -12,14 +12,7 @@
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
-  "importOrder": [
-    "^@mui/(.*)$",
-    "^@untitled-ui/(.*)$",
-    "^react",
-    "^src/(.*)$",
-    "<THIRD_PARTY_MODULES>",
-    "^[./]"
-  ],
+  "importOrder": ["^next", "^react", "^@", "\\.(png|jpe?g|gif|svg|webp)$"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

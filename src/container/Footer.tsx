@@ -1,5 +1,7 @@
-import ClastCloudWhiteLogo from '../assets/image/clast-cloud-logo-white.svg';
-import { VPSDetailPageURL } from '../constant';
+import Image from 'next/image';
+
+import ClastCloudWhiteLogo from '@/assets/image/clast-cloud-logo-white.svg';
+import { VPSDetailPageURL } from '@/constant';
 
 const navigation = {
   vps: [
@@ -94,7 +96,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <img alt="Company name" src={ClastCloudWhiteLogo} className="h-9" />
+            <Image alt="clast logo" src={ClastCloudWhiteLogo} className="h-9" />
             <p className="text-balance text-sm/6 text-gray-300">
               Making the world a better place through constructing elegant
               hierarchies.
