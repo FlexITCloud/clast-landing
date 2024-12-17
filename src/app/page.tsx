@@ -60,7 +60,7 @@ const tiers = [
     name: 'Cloud VPS',
     id: 'tier-cloud-vps',
     href: VPSDetailPageURL,
-    priceMonthly: 'KRW 5000',
+    priceMonthly: '5,000원',
     description:
       '소규모에서 중규모까지, 다양한 사이즈의 클라우드 서버를 구축하고 운영할 수 있습니다.',
     features: [
@@ -75,7 +75,7 @@ const tiers = [
     name: 'Deicated Server',
     id: 'tier-dedicated-server',
     href: '#',
-    priceMonthly: 'KRW 50000',
+    priceMonthly: '50,000원',
     description:
       '대규모 서비스를 위한 전용 서버를 구축하고 운영할 수 있습니다.',
     features: [
@@ -377,7 +377,7 @@ const LandingPage = () => {
                     'text-base',
                   )}
                 >
-                  부터 시작
+                  부터
                 </span>
               </p>
               <p

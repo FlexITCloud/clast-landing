@@ -1,0 +1,23 @@
+.markdown {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown li,
+.markdown blockquote {
+  @apply my-6 font-normal;
+}
+
+.markdown h2 {
+  @apply mb-4 mt-12 text-3xl font-semibold leading-snug;
+}
+
+.markdown h3 {
+  @apply mb-4 mt-8 text-2xl font-medium leading-snug;
+}
+
+.markdown a {
+  @apply text-indigo-600 hover:underline;
+}
