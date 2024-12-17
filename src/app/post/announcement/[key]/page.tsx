@@ -8,6 +8,8 @@ import PostBody from '@/container/PostBody';
 import formatDateToYYYYMMDD from '@/lib/format';
 import { Document, PostPageProps, getDocument } from '@/lib/minio';
 
+export const runtime = 'edge';
+
 export default function Post() {
   const params = useParams<PostPageProps>();
 
