@@ -14,7 +14,7 @@ import {
   VPSDetailPageURL,
 } from '@/constant';
 import { Dialog, DialogPanel } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 
 const navigation = [
@@ -30,6 +30,14 @@ const navigation = [
   { name: '단독서버', href: DedicatedDetailpageURL },
   { name: 'DDos 방어', href: DDosDetailPageURL },
   { name: '구매 문의', href: ContactPageURL },
+  {
+    name: '공지사항',
+    href: '/post',
+    subMenu: [
+      { name: '공지사항', href: '/announcement' },
+      { name: '이벤트', href: '/event' },
+    ],
+  },
 ];
 
 const Navbar = () => {
@@ -72,27 +80,32 @@ const Navbar = () => {
               onMouseEnter={() => handleMouseEnter(item.name)}
               onMouseLeave={handleMouseLeave}
             >
-              <a
+              <Link
                 href={item.href}
-                className="pb-5 text-sm/6 font-semibold text-white"
+                className="flex items-center text-sm/6 font-semibold text-white"
               >
                 {item.name}
-              </a>
+                {item.subMenu ? (
+                  <ChevronDownIcon aria-hidden="true" className="ml-1 w-5" />
+                ) : (
+                  <p className="pl-2"></p>
+                )}
+              </Link>
               {item.subMenu && hoveredMenu === item.name && (
                 <div
-                  className="absolute left-0 my-4 w-32 rounded-lg bg-white shadow-lg"
+                  className="absolute left-0 w-32 rounded-lg py-4 shadow-lg"
                   onMouseEnter={() => handleMouseEnter(item.name)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <ul className="py-2">
                     {item.subMenu.map((subItem) => (
                       <li key={subItem.name}>
-                        <a
+                        <Link
                           href={item.href + subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block px-4 py-2 text-sm text-white hover:bg-gray-400"
                         >
                           {subItem.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

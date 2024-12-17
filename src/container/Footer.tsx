@@ -1,29 +1,34 @@
+'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
 
 import ClastCloudWhiteLogo from '@/assets/image/clast-cloud-logo-white.svg';
-import { VPSDetailPageURL } from '@/constant';
+import { DedicatedDetailpageURL, VPSDetailPageURL } from '@/constant';
 
 const navigation = {
   vps: [
-    { name: 'Gold', href: '/gold' },
-    { name: 'Silver', href: '/silver' },
-    { name: 'Bronze', href: '/bronze' },
+    { name: 'Cloud VPS', href: VPSDetailPageURL },
+    { name: 'Gold', href: VPSDetailPageURL + '/gold' },
+    { name: 'Silver', href: VPSDetailPageURL + '/silver' },
+    { name: 'Bronze', href: VPSDetailPageURL + '/bronze' },
   ],
-  support: [
-    { name: 'Submit ticket', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-  ],
+
   company: [
     { name: 'About', href: '#' },
     { name: 'Blog', href: '#' },
     { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
   ],
+  idc: [
+    { name: 'Dedicated Server', href: DedicatedDetailpageURL },
+    { name: 'Colocation', href: '#' },
+    { name: 'DDoS Protection', href: '#' },
+  ],
   legal: [
     { name: 'Terms of service', href: '#' },
     { name: 'Privacy policy', href: '#' },
-    { name: 'License', href: '#' },
+    { name: 'Cookie policy', href: '#' },
   ],
   social: [
     {
@@ -103,43 +108,42 @@ const Footer = () => {
             </p>
             <div className="flex gap-x-6">
               {navigation.social.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="text-gray-400 hover:text-gray-300"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon aria-hidden="true" className="size-6" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <a
-                  href={VPSDetailPageURL}
-                  className="text-sm/6 font-semibold text-white"
-                >
+                <h3 className="text-sm/6 font-semibold text-white">
                   Cloud VPS
-                </a>
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.vps.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={VPSDetailPageURL + item.href}
                         className="text-sm/6 text-gray-400 hover:text-white"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm/6 font-semibold text-white">Support</h3>
+                <h3 className="text-sm/6 font-semibold text-white">
+                  IDC Service
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.support.map((item) => (
+                  {navigation.idc.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
@@ -188,7 +192,9 @@ const Footer = () => {
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-sm/6 text-gray-400">
-            &copy; 2024 Your Company, Inc. All rights reserved.
+            &copy; 2024 Flex IT, Inc. All rights reserved. 주식회사 플렉스아이티
+            대표자명: 김종수 사업자등록번호: 335-88-03032 통신판매업:
+            2024-인천연수구-1577
           </p>
         </div>
       </div>

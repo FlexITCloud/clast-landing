@@ -26,7 +26,7 @@ export default function NotFound() {
             Page not found
           </h1>
           <p className="mt-6 text-pretty text-lg font-medium text-white/70 sm:text-xl/8">
-            Sorry, we couldn&apos;t find the page you&apos;re looking for.
+            요청하신 페이지를 찾을 수 없습니다.
           </p>
           <div className="mt-10 flex justify-center">
             <Link href="/" className="text-sm/7 font-semibold text-white">
