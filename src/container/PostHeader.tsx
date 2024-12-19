@@ -5,7 +5,6 @@ import { Document } from '@/lib/post';
 import { CalendarDaysIcon, ClockIcon } from '@heroicons/react/20/solid';
 
 const howLongAgo = (postDate: Date) => {
-  // dateString: 2024년 02월 26일 parse
   // 년, 개월 ,일 전 단위로 재구성
   const now = new Date();
   const diff = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
