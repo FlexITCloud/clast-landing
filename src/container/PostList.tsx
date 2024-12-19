@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import formatDateToYYYYMMDD from '@/lib/format';
-import { DocumentMetadata, getDocumentList } from '@/lib/minio';
+import { DocumentMetadata, getDocumentList } from '@/lib/post';
 
 export default function PostlistContainer(props: {
   bucket: string;
