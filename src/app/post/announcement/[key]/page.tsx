@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
+import { AnnouncementPageURL } from '@/constant';
 import PostBody from '@/container/PostBody';
 import PostHeader from '@/container/PostHeader';
 import { Document, PostPageProps, getDocument } from '@/lib/post';
@@ -29,7 +30,7 @@ export default function Post() {
       {/* 이전으로 돌아가기 */}
       <div className="mx-auto max-w-7xl pb-8">
         <Link
-          href="/post/announcement"
+          href={AnnouncementPageURL}
           className="text-lg font-medium text-gray-500 hover:underline"
         >
           ← 목록으로 돌아가기

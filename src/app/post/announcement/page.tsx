@@ -1,5 +1,6 @@
 'use client';
 
+import { AnnouncementPageURL } from '@/constant';
 import PostlistContainer from '@/container/PostList';
 
 export default function AnnouncementPage() {
@@ -15,7 +16,7 @@ export default function AnnouncementPage() {
       </div>
       <PostlistContainer
         bucket="clast-announcement"
-        routeTo="/post/announcement"
+        routeTo={AnnouncementPageURL}
       />
     </div>
   );

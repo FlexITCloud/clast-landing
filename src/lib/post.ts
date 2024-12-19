@@ -1,13 +1,13 @@
+import calculateReadingTime from './readingTime';
 import axios from 'axios';
+import { XMLParser } from 'fast-xml-parser';
 import matter from 'gray-matter';
-import readingTime from 'reading-time';
-import { parseStringPromise } from 'xml2js';
 
 import markdownToHtml from '@/lib/mdToHtml';
 
 type File = {
-  Key: Array<string>;
-  LastModified: Array<string>;
+  Key: string;
+  LastModified: string;
 };
 
 export type DocumentMetadata = {
@@ -20,7 +20,7 @@ export type Document = {
   meta: DocumentMetadata;
   slug: string;
   content: string;
-  readingMinutes: number;
+  readingMinutes: string;
 };
 
 export type PostPageProps = {
@@ -39,16 +39,18 @@ const getDocumentList = async (
     },
   );
   const xmlData = resp.data;
-  const parsedData = await parseStringPromise(xmlData);
+  const parser = new XMLParser();
+  const parsedData = await parser.parse(xmlData);
+  console.log(parsedData);
 
   const documentList: DocumentMetadata[] = [];
 
   parsedData.ListBucketResult.Contents.forEach((item: File) => {
-    const name = item.Key[0].split('.')[0];
+    const name = item.Key.split('.')[0];
     documentList.push({
       name: name,
-      lastModified: new Date(item.LastModified[0]),
-      key: item.Key[0],
+      lastModified: new Date(item.LastModified),
+      key: item.Key,
     });
   });
 
@@ -73,7 +75,7 @@ const getDocument = async (
 
   const { data: header, content: content } = matter(data);
   const htmlContent = await markdownToHtml(content);
-  const readingMinutes = Math.ceil(readingTime(content).minutes);
+  const readingMinutes = calculateReadingTime(content);
   return {
     meta: {
       name: name,
