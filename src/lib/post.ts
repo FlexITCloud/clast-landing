@@ -1,5 +1,6 @@
 import axios from 'axios';
 import matter from 'gray-matter';
+import readingTime from 'reading-time';
 import { parseStringPromise } from 'xml2js';
 
 import markdownToHtml from '@/lib/mdToHtml';
@@ -19,6 +20,7 @@ export type Document = {
   meta: DocumentMetadata;
   slug: string;
   content: string;
+  readingMinutes: number;
 };
 
 export type PostPageProps = {
@@ -71,12 +73,14 @@ const getDocument = async (
 
   const { data: header, content: content } = matter(data);
   const htmlContent = await markdownToHtml(content);
+  const readingMinutes = Math.ceil(readingTime(content).minutes);
   return {
     meta: {
       name: name,
       lastModified: lastModified,
       key: key,
     },
+    readingMinutes: readingMinutes,
     slug: header.slug,
     content: htmlContent,
   };

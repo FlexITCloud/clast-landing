@@ -1,12 +1,13 @@
 'use client';
 
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
 import PostBody from '@/container/PostBody';
-import formatDateToYYYYMMDD from '@/lib/format';
-import { Document, PostPageProps, getDocument } from '@/lib/minio';
+import PostHeader from '@/container/PostHeader';
+import { Document, PostPageProps, getDocument } from '@/lib/post';
 
 export const runtime = 'edge';
 
@@ -24,26 +25,22 @@ export default function Post() {
     fetchData();
   }, [params.key]);
   return (
-    <main className="relative isolate">
-      {/* Header section */}
-      <div className="bg-gray-900 px-6 py-14 lg:px-8">
-        <div className="mx-auto max-w-2xl py-24 text-center sm:pt-40">
-          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-            {doc?.meta.name}
-          </h1>
-          <p className="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">
-            {doc != undefined &&
-              doc?.slug + ' | ' + formatDateToYYYYMMDD(doc?.meta.lastModified)}
-          </p>
-        </div>
+    <div className="min-h-screen py-8 sm:py-16 lg:py-24">
+      {/* 이전으로 돌아가기 */}
+      <div className="mx-auto max-w-7xl pb-8">
+        <Link
+          href="/post/announcement"
+          className="text-lg font-medium text-gray-500 hover:underline"
+        >
+          ← 목록으로 돌아가기
+        </Link>
       </div>
-
-      {/* Article Table */}
-      <div className="min-h-screen py-16 sm:py-24 lg:py-32">
+      {doc != undefined && (
         <div className="mx-auto max-w-7xl pb-16">
-          {doc != undefined && <PostBody content={doc.content} />}
+          <PostHeader document={doc} />
+          <PostBody content={doc.content} />
         </div>
-      </div>
-    </main>
+      )}
+    </div>
   );
 }
