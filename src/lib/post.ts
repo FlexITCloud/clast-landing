@@ -41,10 +41,13 @@ const getDocumentList = async (
   const xmlData = resp.data;
   const parser = new XMLParser();
   const parsedData = await parser.parse(xmlData);
-  console.log(parsedData);
 
   const documentList: DocumentMetadata[] = [];
 
+  if (!parsedData.ListBucketResult.Contents) {
+    // if there is no document
+    return [];
+  }
   parsedData.ListBucketResult.Contents.forEach((item: File) => {
     const name = item.Key.split('.')[0];
     documentList.push({
