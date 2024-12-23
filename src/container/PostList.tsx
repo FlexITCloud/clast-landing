@@ -35,6 +35,7 @@ export default function PostlistContainer(props: {
       </thead>
       {loading ? (
         <tbody>
+          {/* TODO: 디자인 개선 및 데이터가 없을 경우 대비 */}
           {/* ghost row with animation */}
           <tr className="animate-pulse border-b border-gray-200 bg-gray-100">
             <td className="bg-gray-100 px-6 py-4 text-sm/6 font-semibold text-gray-500"></td>
